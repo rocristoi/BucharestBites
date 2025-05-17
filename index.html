@@ -1,0 +1,298 @@
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+        <title>Bucharest Bites</title>
+        <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/5787/5787016.png" type="image/png" />
+
+        <script id="card-data" type="application/json">
+            [
+                {
+                    "title": "Caru' cu Bere",
+                    "description": "A historic place with traditional Romanian dishes and stunning interiors.",
+                    "image": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0e/a7/5e/13/caru-cu-bere.jpg?w=900&h=500&s=1"
+                },
+                {
+                    "title": "Pizza Mania",
+                    "description": "Delicious authentic Italian pizza right in the heart of Bucharest.",
+                    "image": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/11/ea/69/d0/pizza-five.jpg?w=900&h=500&s=1"
+                },
+                {
+                    "title": "Burger Van Bistro",
+                    "description": "Famous for juicy burgers, chill vibes, and urban food aesthetics.",
+                    "image": "https://tazzcdn.akamaized.net/uploads/cover/4.jpg"
+                },
+                {
+                    "title": "McDonald's Romană",
+                    "description": "One of the most central and popular McDonald's locations in Bucharest. Quick, familiar, and always open late.",
+                    "image": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/19/fd/9c/68/mcdonald-s.jpg?w=1100&h=600&s=1"
+                },
+                {
+                    "title": "Fryday",
+                    "description": "Fresh Belgian fries, delicious sauces, and a cool atmosphere — perfect for a casual snack in town.",
+                    "image": "https://fryday.ro/wp-content/themes/fryday/img/locatii/locatie-galati.jpg",
+                    "tag": "Romanian Brand"
+                },
+                {
+                    "title": "Mesopotamia",
+                    "description": "Famous for their dürüm and crispy fries — a staple in most malls, and a great option for a quick, filling meal.",
+                    "image": "https://www.aficotroceni.ro/wp-content/uploads/2022/08/restaurant-1.png",
+                    "tag": "Romanian Brand"
+                },
+                {
+                    "title": "Dristor Kebab",
+                    "description": "Legendary spot for shawarma and kebab in Bucharest. Tasty, spicy, and always full of flavor.",
+                    "image": "https://topromanianplaces.com/wp-content/uploads/2023/12/dristor-kebap-01_1625215351.jpg",
+                    "tag": "Romanian Brand"
+                },
+                {
+                    "title": "Super Burger",
+                    "description": "A growing local favorite with juicy burgers, fresh ingredients, and great prices. Street food vibes!",
+                    "image": "https://romans.ro/image_service/0_2_188_0309044001541177512_870_300.jpg?token=1FmTwx3-lU0otHL-j2fgDkNWBC6JWcvf1rIjQyL9MRc",
+                    "tag": "Romanian Brand"
+                },
+                {
+                    "title": "Bucharest Street Food",
+                    "description": "Catch seasonal food trucks and pop-ups with gourmet burgers, tacos, and unique bites all around the city.",
+                    "image": "https://i.ytimg.com/vi/O2YkpNX3aNA/maxresdefault.jpg"
+                }
+                ]
+        </script>
+        <script>
+            const raw = document.getElementById('card-data').textContent;
+            const placesData = JSON.parse(raw);
+            let card = document.getElementById("randomCard")
+            const getRandom = () => {
+                let randomIndex = Math.floor(Math.random() *placesData.length);
+                let randomPlace = placesData[randomIndex];
+
+                randomCard.innerHTML = `
+            <div class="bg-[#1e1e1e] rounded-3xl shadow-2xl overflow-hidden group hover:scale-[1.02] transition duration-300 ease-in-out relative">
+                <div class="relative w-full h-[220px] overflow-hidden ">
+                    <img src="${randomPlace.image}" alt="${randomPlace.title}" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-500 ease-in-out">
+                <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80"></div>
+                <span class="absolute top-4 left-4 bg-white/10 text-white text-xs uppercase px-3 py-1 rounded-full backdrop-blur-md">Featured</span>
+                    </div>
+            <div class=" p-5">
+                 <h2 class="text-white text-2xl font-bold tracking-tight">${randomPlace.title}</h2>
+                <p class="text-gray-400 mt-3  text-sm leading-relaxed">${randomPlace.description}</p>
+                </div>
+            </div>
+            `;
+
+            }
+        </script>
+
+        
+    </head>
+    <body class="bg-[#3C3C3C]">
+        <div class="w-full sticky top-0 z-50 bg-[#087E8B] shadow-md">
+            <div class="max-w-screen-xl mx-auto flex items-center justify-between px-6 sm:px-10 h-20">
+                <div class="flex items-center gap-3">
+                    <img src="https://cdn-icons-png.flaticon.com/512/5787/5787016.png" class="h-10 w-10">
+                    <div class="flex flex-col justify-center">
+                        <h1 class="text-white font-bold text-lg leading-5 italic">Bucharest Bites</h1>
+                        <h2 class="text-white text-sm italic">Best places in town</h2>
+                    </div>
+                </div>
+                <div class="flex gap-6 text-white text-lg font-medium">
+                    <a href="#home" class="hover:scale-105 hover:underline transition duration-200">Home</a>
+                    <a href="#places" class="hover:scale-105 hover:underline transition duration-200">Places</a>
+                    <a href="#random" class="hover:scale-105 hover:underline transition duration-200">Surprise</a>
+                </div>
+            </div>
+        </div>
+        
+
+        <section id="home" class="mt-20 w-full h-[650px] container mx-auto lg:px-20 flex flex-col lg:flex-row items-center justify-between">
+            <div class="flex flex-col items-start justify-center w-1/2">
+                <h1 class="lg:text-6xl text-4xl font-black text-center lg:text-start text-white">No idea what to eat in Bucharest?</h1>
+                <p class="text-white text-xl mt-5 text-center lg:text-start">We’ve all been there — hungry, unsure, and scrolling forever. This site makes it easy. Whether you're in the mood for a quick bite, something local, or a hidden gem you’ve never heard of, we’ll point you in the right direction. No stress, just good food.</p>
+            </div>
+
+            <img src="https://i.ibb.co/7dHckwxY/Bucharest.png" alt="Bucharest" class="w-100 h-50 lg:w-200 lg:h-100">
+        </section>
+
+        <section id="places">
+            <div class="container mx-auto px-20 flex flex-col mt-40">
+                <h1 class="text-6xl text-white font-bold">Places.</h1>
+                <span class="font-bold text-xl text-gray-300">Discover our best selection</span>
+
+                <div class="flex flex-row gap-5 items-center justify-center mt-10">
+                    <div class="w-[100%] bg-[#087E8B] h-[2px]"></div>
+                    <span class="text-gray-300">Premium</span>
+                    <div class="w-[100%] bg-[#087E8B] h-[2px]"></div>
+                </div>
+
+                <section class="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+
+                    <div class="bg-[#252525] rounded-2xl shadow-lg overflow-hidden hover:scale-101 transition">
+                    <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0e/a7/5e/13/caru-cu-bere.jpg?w=900&h=500&s=1" alt="Restaurant 1" class="w-full h-[200px] object-cover">
+                    <div class="p-5">
+                        <h2 class="text-white text-2xl font-semibold">Caru' cu Bere</h2>
+                        <p class="text-gray-300 mt-2">A historic place with traditional Romanian dishes and stunning interiors.</p>
+                    </div>
+                </div>
+
+                <div class="bg-[#252525] rounded-2xl shadow-lg overflow-hidden hover:scale-101 transition">
+                    <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/11/ea/69/d0/pizza-five.jpg?w=900&h=500&s=1" alt="Restaurant 2" class="w-full h-[200px] object-cover">
+                    <div class="p-5">
+                        <h2 class="text-white text-2xl font-semibold">Pizza Mania</h2>
+                        <p class="text-gray-300 mt-2">Delicious authentic Italian pizza right in the heart of Bucharest.</p>
+                    </div>
+                </div>
+
+                <div class="bg-[#252525] rounded-2xl shadow-lg overflow-hidden hover:scale-101 transition">
+                    <img src="https://tazzcdn.akamaized.net/uploads/cover/4.jpg" alt="Restaurant 3" class="w-full h-[200px] object-cover">
+                    <div class="p-5">
+                        <h2 class="text-white text-2xl font-semibold">Burger Van Bistro</h2>
+                        <p class="text-gray-300 mt-2">Famous for juicy burgers, chill vibes, and urban food aesthetics.</p>
+                    </div>
+                </div>
+            </section>
+
+            <div class="flex flex-row gap-10 items-center justify-center mt-10 whitespace-nowrap">
+                <div class="w-[100%] bg-[#087E8B] h-[2px]"></div>
+                <span class="text-gray-300">Fast Food</span>
+                <div class="w-[100%] bg-[#087E8B] h-[2px]"></div>
+            </div>
+
+            <section class="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+                <div class="bg-[#252525] rounded-2xl shadow-lg overflow-hidden hover:scale-101 transition">
+                    <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/19/fd/9c/68/mcdonald-s.jpg?w=1100&h=600&s=1" alt="McDonald's Romana" class="w-full h-[200px] object-cover">
+                    <div class="p-5">
+                        <h2 class="text-white text-2xl font-semibold">McDonald's Romană</h2>
+                        <p class="text-gray-300 mt-2">One of the most central and popular McDonald's locations in Bucharest. Quick, familiar, and always open late.</p>
+                    </div>
+                </div>
+
+                <div class="bg-[#252525] rounded-2xl shadow-lg overflow-hidden hover:scale-101 transition">
+                    <img src="https://fryday.ro/wp-content/themes/fryday/img/locatii/locatie-galati.jpg" alt="Fryday" class="w-full h-[200px] object-cover">
+                    <div class="p-5">
+                        <h2 class="text-white text-2xl font-semibold">Fryday  (<span class="bg-gradient-to-r from-red-500 via-yellow-200 to-indigo-600 bg-clip-text text-transparent">Romanian Brand</span>)</h2>
+                        <p class="text-gray-300 mt-2">Fresh Belgian fries, delicious sauces, and a cool atmosphere — perfect for a casual snack in town.</p>
+                    </div>
+                </div>
+
+                <div class="bg-[#252525] rounded-2xl shadow-lg overflow-hidden hover:scale-101 transition">
+                    <img src="https://www.aficotroceni.ro/wp-content/uploads/2022/08/restaurant-1.png" alt="Mesopotamia" class="w-full h-[200px] object-cover">
+                    <div class="p-5">
+                        <h2 class="text-white text-2xl font-semibold">Mesopotamia  (<span class="bg-gradient-to-r from-red-500 via-yellow-200 to-indigo-600 bg-clip-text text-transparent">Romanian Brand</span>)</h2>
+                        <p class="text-gray-300 mt-2">Famous for their dürüm and crispy fries — a staple in most malls, and a great option for a quick, filling meal.</p>
+                    </div>
+                </div>
+
+                <div class="bg-[#252525] rounded-2xl shadow-lg overflow-hidden hover:scale-101 transition">
+                    <img src="https://topromanianplaces.com/wp-content/uploads/2023/12/dristor-kebap-01_1625215351.jpg" alt="Dristor Kebab" class="w-full h-[200px] object-cover">
+                    <div class="p-5">
+                        <h2 class="text-white text-2xl font-semibold">Dristor Kebab  (<span class="bg-gradient-to-r from-red-500 via-yellow-200 to-indigo-600 bg-clip-text text-transparent">Romanian Brand</span>)</h2>
+                        <p class="text-gray-300 mt-2">Legendary spot for shawarma and kebab in Bucharest. Tasty, spicy, and always full of flavor.</p>
+                    </div>
+                </div>
+
+                <div class="bg-[#252525] rounded-2xl shadow-lg overflow-hidden hover:scale-101 transition">
+                    <img src="https://romans.ro/image_service/0_2_188_0309044001541177512_870_300.jpg?token=1FmTwx3-lU0otHL-j2fgDkNWBC6JWcvf1rIjQyL9MRc" alt="Super Burger" class="w-full h-[200px] object-cover">
+                    <div class="p-5">
+                        <h2 class="text-white text-2xl font-semibold">Super Burger (<span class="bg-gradient-to-r from-red-500 via-yellow-200 to-indigo-600 bg-clip-text text-transparent">Romanian Brand</span>)</h2>
+                        <p class="text-gray-300 mt-2">A growing local favorite with juicy burgers, fresh ingredients, and great prices. Street food vibes!</p>
+                    </div>
+                </div>
+
+                <div class="bg-[#252525] rounded-2xl shadow-lg overflow-hidden hover:scale-101 transition">
+                    <img src="https://i.ytimg.com/vi/O2YkpNX3aNA/maxresdefault.jpg" alt="Food Truck Festival Picks" class="w-full h-[200px] object-cover">
+                    <div class="p-5">
+                        <h2 class="text-white text-2xl font-semibold">Bucharest Street Food</h2>
+                        <p class="text-gray-300 mt-2">Catch seasonal food trucks and pop-ups with gourmet burgers, tacos, and unique bites all around the city.</p>
+                    </div>
+                </div>
+            </section>
+
+            
+                </div>
+            </div>
+        </section>
+
+
+        <section id="random" class="h-[600px] mt-40 ">
+            <div class="container mx-auto px-20 flex flex-col items-center justify-center">
+                <h1 class="text-5xl lg:text-6xl text-white font-bold">Surprise me.</h1>
+                <span class="font-bold text-center text-xl text-gray-300">Click to generate a random location for you to eat at.</span>
+                <div class="flex flex-col w-full h-full items-center justify-center lg:px-120 mt-5">
+                    <button onclick="getRandom()" class="bg-white text-[#087E8B] px-6 py-3 rounded-full font-bold text-lg hover:bg-gray-200 transition-transform transform hover:scale-103">Generate</button>
+                    <div class="mt-5" id="randomCard"></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-20">
+            <div class="container mx-auto px-6 lg:px-20 flex flex-col items-center justify-center">
+              <h1 class="text-5xl lg:text-6xl text-white font-bold text-center">Testimonials.</h1>
+              <span class="font-bold text-center text-xl text-gray-300 mt-2">What people say about our picks.</span>
+          
+              <div class="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 w-full">
+                <div class="bg-[#252525] rounded-2xl flex p-4 items-center gap-4">
+                  <img src="https://thebluegrasssituation.com/wp-content/uploads/2020/08/re-perez-branding-for-the-people-square-headshot.jpg" alt="Person1" class="object-cover rounded-full w-16 h-16" />
+                  <div class="text-white">
+                    <h1 class="font-bold">Ionuț Popa</h1>
+                    <span class="italic">Really nice TailwindCSS interface.</span>
+                  </div>
+                </div>
+          
+                <div class="bg-[#252525] rounded-2xl flex p-4 items-center gap-4">
+                  <img src="https://media.cristoi.ro/images/pfp.png" alt="Person2" class="object-cover rounded-full w-16 h-16" />
+                  <div class="text-white">
+                    <h1 class="font-bold">Cristian Capota</h1>
+                    <span class="italic">Food was great!</span>
+                  </div>
+                </div>
+          
+                <div class="bg-[#252525] rounded-2xl flex p-4 items-center gap-4">
+                  <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Person3" class="object-cover rounded-full w-16 h-16" />
+                  <div class="text-white">
+                    <h1 class="font-bold">Maria Lungu</h1>
+                    <span class="italic">Perfect for date nights in the city.</span>
+                  </div>
+                </div>
+          
+                <div class="bg-[#252525] rounded-2xl flex p-4 items-center gap-4">
+                  <img src="https://randomuser.me/api/portraits/men/36.jpg" alt="Person4" class="object-cover rounded-full w-16 h-16" />
+                  <div class="text-white">
+                    <h1 class="font-bold">Andrei Pavel</h1>
+                    <span class="italic">Discovered my new favorite shawarma spot!</span>
+                  </div>
+                </div>
+          
+                <div class="bg-[#252525] rounded-2xl flex p-4 items-center gap-4">
+                  <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Person5" class="object-cover rounded-full w-16 h-16" />
+                  <div class="text-white">
+                    <h1 class="font-bold">Ioana Dumitrescu</h1>
+                    <span class="italic">Easy to use.</span>
+                  </div>
+                </div>
+          
+                <div class="bg-[#252525] rounded-2xl flex p-4 items-center gap-4">
+                  <img src="https://randomuser.me/api/portraits/men/28.jpg" alt="Person6" class="object-cover rounded-full w-16 h-16" />
+                  <div class="text-white">
+                    <h1 class="font-bold">Mihai Stoica</h1>
+                    <span class="italic">A lifesaver when I'm too tired to decide.</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          
+
+        <footer class=" w-full bg-[#087E8B] text-white py-10 px-40 flex flex-col md:flex-row justify-between items-center">
+            <div class="text-center md:text-left">
+                <h3 class="text-2xl font-bold">Bucharest Bites</h3>
+                <p class="text-gray-200 mt-2">Your quick guide to delicious food in the city.</p>
+            </div>
+            <div class="flex gap-6 mt-6 md:mt-0">
+                <a href="https://github.com/rocristoi/BucharestBites" class="hover:underline">Github</a>
+                <a href="https://hackclub.com" class="hover:underline">Hack Club</a>
+                <a href="mailto:cristi@cristoi.ro" class="hover:underline">Contact</a>
+            </div>
+        </footer>
+    </body>
+</html>
